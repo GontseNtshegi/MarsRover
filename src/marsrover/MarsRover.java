@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
+import java.util.Vector;
 
 
 /**
@@ -22,67 +23,58 @@ public class MarsRover {
     /**
      * @param args the command line arguments
      */
+    @SuppressWarnings("UnusedAssignment")
     public static void main(String[] args) {
         // TODO code application logic here
         
         FileReader inputFile = null;
         
-        String[] pos=new String[2];
+        Vector<String> pos=new Vector<String>();
         try{
             File file = new File("C:\\Users\\ntshegg\\Desktop\\MarsRover\\src\\marsrover\\newfile.txt");
             inputFile= new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(inputFile);
-
-            Grid grid = new Grid(5,5);//set boundaries
-            Grid roverPosition = new Position(3,3);
-            Direction roverDirection=new Direction("N");
-            Rover rover = new Rover((Position)roverPosition,roverDirection);
             
-            rover.executeInstructions("R");
-            System.out.println(rover);
-            rover.executeInstructions("M");
-            System.out.println(rover);
-            rover.executeInstructions("R");
-            System.out.println(rover);
-           rover.executeInstructions("R");
-            System.out.println(rover);
+            int[] gridPos = new int[2];
+            Grid grid = null;//set boundaries
+            Grid roverPosition = null;
+            Direction roverDirection=null;
+            Rover rover = null;
             
-              /*rover.executeInstructions("M");
-              System.out.println(rover);
-            rover.executeInstructions("M");
-             System.out.println(rover);
-            rover.executeInstructions("R");
-            System.out.println(rover);
-            
-            rover.executeInstructions("M");
-             System.out.println(rover);
-            rover.executeInstructions("R");
-             System.out.println(rover);
-            rover.executeInstructions("R");
-             System.out.println(rover);
-            rover.executeInstructions("M");
-            System.out.println(rover);*/
-            
-           
-            
-           /* StringBuffer content = new StringBuffer();
-          
+           StringBuffer content = new StringBuffer();
             String text;
+            int i=0;
             while((text=bufferedReader.readLine())!=null)
             {
                StringTokenizer token = new StringTokenizer(text," ");
-               int i=0;
+               
                while(token.hasMoreTokens())
                {
-                   pos[i]=token.nextToken();
-                   i++;
+                   if(i<2)
+                   {
+                       gridPos[i]=(Integer.parseInt(token.nextToken()));
+                       i++;
+                   }
+                   else{
+                   pos.add(token.nextToken());
+                   }
                   
                }
             
-               
-            }*/
+              
+            }
+            grid = new Grid(gridPos[0],gridPos[1]);
             
-          ///  System.out.println(Y);
+            for(int j=0;j<pos.size();j=j+4)
+            {
+               
+                roverPosition = new Position(Integer.parseInt(pos.get(j)),Integer.parseInt(pos.get(j+1)));
+                roverDirection=new Direction(pos.get(j+2));
+                rover = new Rover((Position)roverPosition,roverDirection);
+                rover.executeInstructions(pos.get(j+3));
+                System.out.println(rover);
+            }
+         
         }
         catch(IOException e)
         {

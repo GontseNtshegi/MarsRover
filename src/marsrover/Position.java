@@ -10,6 +10,7 @@ package marsrover;
  * @author ntshegg
  */
 public class Position extends Grid implements Comparable{ 
+    Grid grid;
     public int getX() {
         return x;
     }
@@ -37,7 +38,12 @@ public class Position extends Grid implements Comparable{
         super(x,y);
  
     }
-   
+   public Position(int x,int y,Grid grid)
+    {
+        super(x,y);
+        this.grid=grid;
+ 
+    }
     @Override
     public String toString()
     {
@@ -55,7 +61,7 @@ public class Position extends Grid implements Comparable{
         Position temp = new Position();
         temp.x=direction.x*this.x;
         temp.y=direction.y*this.y;
-        
+            
         return temp;
     }
    

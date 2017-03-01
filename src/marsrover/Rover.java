@@ -39,12 +39,16 @@ public class Rover {
     }
     public void executeInstructions(String instruction)
     {
- 
-            if(instruction.equalsIgnoreCase("L"))
+        char[] instructionChars=instruction.toCharArray();
+        
+        for(int i=0;i<instructionChars.length;i++){
+            
+          
+            if(instructionChars[i]=='L')
             {
                 rotate(INSTRUCTIONDIRECTION[0]);
             }
-            else if(instruction.equalsIgnoreCase("R"))
+            else if(instructionChars[i]=='R')
             {
                 rotate(INSTRUCTIONDIRECTION[1]);
             }
@@ -52,6 +56,7 @@ public class Rover {
             {
                 move();
             }
+        }
     }
     public void rotate(Position rotate)
     {
