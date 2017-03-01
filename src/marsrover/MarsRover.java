@@ -33,6 +33,18 @@ public class MarsRover {
             inputFile= new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(inputFile);
 
+            Grid grid = new Grid(5,5);//set boundaries
+            Position roverPosition = new Position(1,2);
+            Direction roverDirection=new Direction("N");
+            Rover rover = new Rover(roverPosition,roverDirection);
+            
+            rover.executeInstructions("L");
+            rover.executeInstructions("M");
+            System.out.println(rover);
+             rover.executeInstructions("L");
+            rover.executeInstructions("M");
+            System.out.println(rover);
+             
            /* StringBuffer content = new StringBuffer();
           
             String text;

@@ -37,7 +37,7 @@ public class Rover {
     public void setDirection(Direction direction) {
         this.direction=direction;
     }
-    public void receiveInstructions(String instruction)
+    public void executeInstructions(String instruction)
     {
  
             if(instruction.equalsIgnoreCase("L"))
@@ -57,13 +57,22 @@ public class Rover {
     {
        //first do the swap
        Position swap= this.direction.position.swap();
-       swap.multiply(rotate);
+       
         //then  multiply
-        
+        this.direction.position=swap.multiply(rotate); //returns new direction
+        this.direction.setDirection();
         //and return results
+        
     }
     public void move()//moves once in the direction its facing
     {
-        
+       this.position=this.position.add(this.direction.position);
+       
+       
+    }
+    @Override
+    public String toString()
+    {
+        return this.position+" "+this.direction;
     }
 }

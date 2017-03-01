@@ -9,7 +9,7 @@ package marsrover;
  *
  * @author ntshegg
  */
-public class Position extends Grid { 
+public class Position extends Grid implements Comparable{ 
     public int getX() {
         return x;
     }
@@ -38,6 +38,7 @@ public class Position extends Grid {
  
     }
    
+    @Override
     public String toString()
     {
      return this.x+" "+this.y;
@@ -65,6 +66,20 @@ public class Position extends Grid {
         temp.y=direction.y+this.y;
         
         return temp;
+    }
+
+    public int compareTo(Position pos) {
+       if(this.x==pos.x && this.y==pos.y)
+       {
+           return 0;
+       }
+       else
+           return this.x>pos.x ?1:-1;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    
 }
