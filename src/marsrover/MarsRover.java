@@ -34,17 +34,37 @@ public class MarsRover {
             BufferedReader bufferedReader = new BufferedReader(inputFile);
 
             Grid grid = new Grid(5,5);//set boundaries
-            Position roverPosition = new Position(1,2);
+            Grid roverPosition = new Position(3,3);
             Direction roverDirection=new Direction("N");
-            Rover rover = new Rover(roverPosition,roverDirection);
+            Rover rover = new Rover((Position)roverPosition,roverDirection);
             
-            rover.executeInstructions("L");
+            rover.executeInstructions("R");
+            System.out.println(rover);
             rover.executeInstructions("M");
             System.out.println(rover);
-             rover.executeInstructions("L");
-            rover.executeInstructions("M");
+            rover.executeInstructions("R");
             System.out.println(rover);
-             
+           rover.executeInstructions("R");
+            System.out.println(rover);
+            
+              /*rover.executeInstructions("M");
+              System.out.println(rover);
+            rover.executeInstructions("M");
+             System.out.println(rover);
+            rover.executeInstructions("R");
+            System.out.println(rover);
+            
+            rover.executeInstructions("M");
+             System.out.println(rover);
+            rover.executeInstructions("R");
+             System.out.println(rover);
+            rover.executeInstructions("R");
+             System.out.println(rover);
+            rover.executeInstructions("M");
+            System.out.println(rover);*/
+            
+           
+            
            /* StringBuffer content = new StringBuffer();
           
             String text;

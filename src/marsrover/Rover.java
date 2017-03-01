@@ -12,7 +12,7 @@ package marsrover;
 public class Rover {
     private Position position;
     private Direction direction;
-     private Position[] INSTRUCTIONDIRECTION ={new Position(-1,-1),new Position(1,1)};
+     private final Position[] INSTRUCTIONDIRECTION ={new Position(-1,1),new Position(1,-1)};
     public Rover()
     {
         this.position=null;
