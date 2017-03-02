@@ -10,40 +10,40 @@ package marsrover;
  * @author ntshegg
  */
 public class Direction {
-    public Position position;
-    public String direction;
-    public Position[] CONSTDIRECTION ={new Position(0,1),new Position(0,-1),new Position(-1,0),new Position(1,0)};
-    public String[] SYMBOL ={"N","S","E","W"};
-    public Direction()
+    public Position position; //Direction holds a position instance variable as (x,y)
+    public String direction; //String that holds direction symbol for display
+    public Position[] CONSTDIRECTION ={new Position(0,1),new Position(0,-1),new Position(-1,0),new Position(1,0)};//Direction options
+    public String[] SYMBOL ={"N","S","E","W"};//symbol options
+    public Direction()//default constructor
     {
-        this.position = new Position();
-        this.direction ="";
+        this.position = new Position();//creates a default position
+        this.direction ="";//empty symbol
     }
-    public Direction(String letter)
+    public Direction(String letter)//parameterised constructor that takes in the direction symbol
     {
-        this.direction =letter;
-       for(int i=0;i<SYMBOL.length;i++)
+        this.direction =letter;//stores current letter
+       for(int i=0;i<SYMBOL.length;i++)//loops through the symbols list
        {
-           if(SYMBOL[i].equalsIgnoreCase(letter))
+           if(SYMBOL[i].equalsIgnoreCase(letter))//when a sybol is found
            {
-               this.position = CONSTDIRECTION[i];
+               this.position = CONSTDIRECTION[i];//assign it to its vector direction
            }
        }
     }
-    public void setDirection()
+    public void setDirection()//setter method
     {
-        for(int i=0;i<CONSTDIRECTION.length;i++)
+        for(int i=0;i<CONSTDIRECTION.length;i++)//loops through the direction vectors
        {
-        if(this.position.compareTo(CONSTDIRECTION[i])==0)
+        if(this.position.compareTo(CONSTDIRECTION[i])==0)//if found
         {
-            this.direction = SYMBOL[i];
+            this.direction = SYMBOL[i];//assign the direction string to its matching symbol
         }
        }
     }
     @Override
-    public String toString()
+    public String toString()//toString method
     {
-        return this.direction;
+        return this.direction;//returns the direction Symbol
     }
 }
    

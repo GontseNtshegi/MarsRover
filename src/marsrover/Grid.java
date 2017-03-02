@@ -9,11 +9,11 @@ package marsrover;
  *
  * @author ntshegg
  */
-public class Grid {
+public class Grid {//Parent to Position
     public int x;
     public int y;
     
-    public Grid()
+    public Grid()//default constructor
     {
         this.x=0;
         this.y=0;

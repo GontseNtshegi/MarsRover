@@ -10,73 +10,73 @@ package marsrover;
  * @author ntshegg
  */
 public class Rover {
-    private Position position;
-    private Direction direction;
-     private final Position[] INSTRUCTIONDIRECTION ={new Position(-1,1),new Position(1,-1)};
-    public Rover()
+    private Position position;//Rover has a position on the grid and thus hold a Position object
+    private Direction direction;//Tover also holds a Direction Object
+     private final Position[] INSTRUCTIONDIRECTION ={new Position(-1,1),new Position(1,-1)};//Rover can be rotated 90 degrees to the left or right and thus holds rotation vectors for that
+    public Rover()//default constructor
     {
-        this.position=null;
-        this.direction=null;
+        this.position=null;//initial the position is null
+        this.direction=null;//and so is the direction
     }
-    public Rover(Position pos,Direction dir)
+    public Rover(Position pos,Direction dir)//Parameterised constructor
     {
-        this.position=pos;
-        this.direction=dir;
+        this.position=pos;//assigns position
+        this.direction=dir;//assign direction
     }
-    public Position getPosition() {
+    public Position getPosition() {//Accessor method
         return position;
     }
 
-    public void setPosition(Position position) {
+    public void setPosition(Position position) {//Setter method
         this.position = position;
     }
 
-    public Direction getDirection() {
+    public Direction getDirection() {//Accessor method
         return direction;
     }
-    public void setDirection(Direction direction) {
+    public void setDirection(Direction direction) {//Setter method
         this.direction=direction;
     }
-    public void executeInstructions(String instruction)
+    public void executeInstructions(String instruction)//method to handle instructions to the rover
     {
-        char[] instructionChars=instruction.toCharArray();
+        char[] instructionChars=instruction.toCharArray();//receives a String of characters and transforms it to chars
         
-        for(int i=0;i<instructionChars.length;i++){
+        for(int i=0;i<instructionChars.length;i++){//loop through the instruction
             
           
-            if(instructionChars[i]=='L')
+            if(instructionChars[i]=='L')//if a character of value L is found
             {
-                rotate(INSTRUCTIONDIRECTION[0]);
+                rotate(INSTRUCTIONDIRECTION[0]);//rotate the rover 90 degrees to the left
             }
-            else if(instructionChars[i]=='R')
+            else if(instructionChars[i]=='R')//if a character of value R is found
             {
-                rotate(INSTRUCTIONDIRECTION[1]);
+                rotate(INSTRUCTIONDIRECTION[1]);//rotate the rover 90 degrees to the right
             }
-            else
+            else // if character M is found
             {
-                move();
+                move();//move the rover one space to the direction
             }
         }
     }
-    public void rotate(Position rotate)
+    public void rotate(Position rotate)//method to rotate the rover
     {
-       //first do the swap
+       //first do the swap on the rovers direction
        Position swap= this.direction.position.swap();
        
-        //then  multiply
+        //then  multiply the swap with the right or left rotation
         this.direction.position=swap.multiply(rotate); //returns new direction
-        this.direction.setDirection();
+        this.direction.setDirection();//then set the direction symbol
         //and return results
         
     }
-    public void move()//moves once in the direction its facing
+    public void move()//moves once in the direction of the rover
     {
-       this.position=this.position.add(this.direction.position);
+       this.position=this.position.add(this.direction.position);//adds the current rovers position to the new direction
        
        
     }
     @Override
-    public String toString()
+    public String toString()//to string
     {
         return this.position+" "+this.direction;
     }

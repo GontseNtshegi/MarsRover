@@ -29,12 +29,12 @@ public class MarsRover {
         
         FileReader inputFile = null;
         
-        Vector<String> pos=new Vector<String>();
+        Vector<String> pos=new Vector<>();
         try{
-            File file = new File("C:\\Users\\ntshegg\\Desktop\\MarsRover\\src\\marsrover\\newfile.txt");
+            File file = new File(args[0]);
             inputFile= new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(inputFile);
-            
+           
             int[] gridPos = new int[2];
             Grid grid = null;//set boundaries
             Grid roverPosition = null;

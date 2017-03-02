@@ -10,82 +10,86 @@ package marsrover;
  * @author ntshegg
  */
 public class Position extends Grid implements Comparable{ 
-    Grid grid;
-    public int getX() {
+    public Grid grid=new Grid();//Grid object to make sure the position stays within the boundaries
+    
+    //Accessor method
+    public int getX() {//
         return x;
     }
 
+    //setter method
     public void setX(int x) {
         this.x = x;
     }
 
+    //Accessor method
     public int getY() {
         return y;
     }
 
+    //setter method
     public void setY(int y) {
         this.y = y;
     }
     
     
-    public Position()
+    public Position()//default constructor
     {
-        super();
+        super();//call super constructor
        
     }
-    public Position(int x,int y)
+    public Position(int x,int y)//parameterised constructor
     {
-        super(x,y);
+        super(x,y);//call parameterised super constructor
  
     }
-   public Position(int x,int y,Grid grid)
+   public Position(int x,int y,Grid grid)//parameterised constructor
     {
-        super(x,y);
-        this.grid=grid;
+        super(x,y);//call parameterised super constructor
+        this.grid=new Grid(grid.x,grid.y);
  
     }
     @Override
-    public String toString()
+    public String toString()//toString method
     {
+ 
      return this.x+" "+this.y;
     }
-    public Position swap()
+    public Position swap()//swap current position
     {
-        Position temp = new Position();
-        temp.x=this.y;
-        temp.y=this.x;
-        return temp;
+        Position temp = new Position();//creates a new temporary position
+        temp.x=this.y;//x becomes y
+        temp.y=this.x;//And y becomes x
+        return temp; //return the change
     }
-    public Position multiply(Position direction)
+    public Position multiply(Position direction)//multiply two positions using vector multiplication
     {
-        Position temp = new Position();
-        temp.x=direction.x*this.x;
-        temp.y=direction.y*this.y;
+        Position temp = new Position();//creates new variable to hold result
+        temp.x=direction.x*this.x;//x multiplies x
+        temp.y=direction.y*this.y;//and y multiplies y
             
-        return temp;
+        return temp;//return temp
     }
    
-       public Position add(Position direction)
+       public Position add(Position direction)//add two positions using vector addition
     {
-        Position temp = new Position();
-        temp.x=direction.x+this.x;
-        temp.y=direction.y+this.y;
+        Position temp = new Position();//creates new variable to hold result
+        temp.x=direction.x+this.x; //x is added to x
+        temp.y=direction.y+this.y;//y is added to y
         
         return temp;
     }
 
-    public int compareTo(Position pos) {
-       if(this.x==pos.x && this.y==pos.y)
+       @Override
+    public int compareTo(Object pos) {//compares two positions if they are equal
+        
+        Position pos1 = (Position)pos;
+       if(this.x==pos1.x && this.y==pos1.y)// both x's and y's should be equal
        {
            return 0;
        }
        else
-           return this.x>pos.x ?1:-1;
+           return this.x>pos1.x ?1:-1;
     }
-
-    @Override
-    public int compareTo(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-   
+ 
 }
