@@ -71,7 +71,10 @@ public class Rover {
     }
     public void move()//moves once in the direction of the rover
     {
-       this.position=this.position.add(this.direction.position);//adds the current rovers position to the new direction
+        Position temp =this.position.add(this.direction.position);
+        
+           this.position=temp;//adds the current rovers position to the new direction
+         
        
        
     }

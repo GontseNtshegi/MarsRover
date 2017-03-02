@@ -46,8 +46,8 @@ public class Position extends Grid implements Comparable{
    public Position(int x,int y,Grid grid)//parameterised constructor
     {
         super(x,y);//call parameterised super constructor
-        this.grid=new Grid(grid.x,grid.y);
- 
+        this.grid=grid;
+  
     }
     @Override
     public String toString()//toString method
@@ -79,7 +79,18 @@ public class Position extends Grid implements Comparable{
         
         return temp;
     }
-
+    public boolean isOutofBounds(Position pos) throws IndexOutOfBoundsException
+    {
+        if(pos.x>=0 && pos.x<=this.grid.x )//checks if the position is not out of bounds
+            return false;
+        
+        else
+            throw new IndexOutOfBoundsException("Rover is out of the grid");
+            
+            
+            
+      
+    }
        @Override
     public int compareTo(Object pos) {//compares two positions if they are equal
         
