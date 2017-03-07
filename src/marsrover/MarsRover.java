@@ -91,7 +91,7 @@ public class MarsRover {
             }
             catch(IOException e)
                     {
-                        e.printStackTrace();;
+                        e.printStackTrace();
                     }
         }
     }
