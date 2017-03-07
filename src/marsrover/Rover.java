@@ -11,7 +11,7 @@ package marsrover;
  */
 public class Rover {
     private Position position;//Rover has a position on the grid and thus hold a Position object
-    private Direction direction;//Tover also holds a Direction Object
+    private Direction direction;//Rover also holds a Direction Object
      private final Position[] INSTRUCTIONDIRECTION ={new Position(-1,1),new Position(1,-1)};//Rover can be rotated 90 degrees to the left or right and thus holds rotation vectors for that
     public Rover()//default constructor
     {
